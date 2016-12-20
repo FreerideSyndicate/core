@@ -1,3 +1,21 @@
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+	testCompile "junit:junit:4.12"
+}
+
 buildscript {
 	ext {
 		springBootVersion = '2.0.0.BUILD-SNAPSHOT'
@@ -10,31 +28,12 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
-
-
-
 }
-
-
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
 
 jar {
 	baseName = 'Core'
 	version = '0.0.1-SNAPSHOT'
 }
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
-}
-
 
 dependencies {
 	compile('org.springframework.boot.experimental:spring-boot-starter-web-reactive')
@@ -44,7 +43,10 @@ dependencies {
     compile "io.reactivex:rxnetty-common"
     compile "io.reactivex:rxnetty-http"
     compile "io.reactivex:rxjava-reactive-streams"
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
+	compile("org.springframework.boot:spring-boot-starter-freemarker")
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+	testCompile("junit:junit")
 }
 
 dependencyManagement {
