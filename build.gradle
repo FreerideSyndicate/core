@@ -18,7 +18,7 @@ dependencies {
 
 buildscript {
 	ext {
-		springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+		springBootVersion = '1.4.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -36,21 +36,19 @@ jar {
 }
 
 dependencies {
-	compile('org.springframework.boot.experimental:spring-boot-starter-web-reactive')
-    compile('org.springframework.boot.experimental:spring-boot-starter-web-reactive') {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
-    }
-    compile "io.reactivex:rxnetty-common"
-    compile "io.reactivex:rxnetty-http"
-    compile "io.reactivex:rxjava-reactive-streams"
+	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
+	compile("org.springframework:spring-webmvc")
+	//compile("org.hibernate:hibernate-validator")
+    compile 'com.fasterxml.jackson.core:jackson-core:2.4.4'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.4'
 	compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-	compile("org.springframework.boot:spring-boot-starter-freemarker")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 	testCompile("junit:junit")
 }
 
 dependencyManagement {
 	imports {
-		mavenBom "org.springframework.boot.experimental:spring-boot-dependencies-web-reactive:0.1.0.BUILD-SNAPSHOT"
+		mavenBom "org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE"
 	}
 }
