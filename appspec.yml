@@ -5,8 +5,8 @@ files:
     destination: /core/
 hooks:
    ApplicationStop:
-     - location: /src/main/resources/stop.sh
+     - location: /stop.sh
        timeout: 300
    ApplicationStart:
-     - location: /src/main/resources/run.sh
+     - location: /run.sh
        timeout: 300
