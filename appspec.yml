@@ -4,6 +4,9 @@ files:
   - source: /
     destination: /core/
 hooks:
-   Install:
+   ApplicationStop:
+     - location: /src/main/resources/stop.sh
+       timeout: 300
+   ApplicationStart:
      - location: /src/main/resources/run.sh
        timeout: 300
