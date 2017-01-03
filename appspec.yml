@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /core/
+hooks:
+   ApplicationStop:
+     - location: /src/main/resources/stop.sh
+       timeout: 300
+   ApplicationStart:
+     - location: /src/main/resources/run.sh
+       timeout: 300
