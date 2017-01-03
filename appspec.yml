@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /core/
+hooks:
+   Install:
+     - location: /src/main/resources/run.sh
+       timeout: 300
