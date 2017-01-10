@@ -91,9 +91,9 @@ public class CoreApplicationTests {
 		template.setRequestFactory(factory);
 
 		ResponseEntity<String> httpsEntity = template
-				.getForEntity("https://localhost:" + this.port + "/hello", String.class);
+				.getForEntity("https://localhost:" + this.port + "/", String.class);
 		assertThat(httpsEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(httpsEntity.getBody()).isEqualTo("hello");
+		assertThat(httpsEntity.getBody()).isEqualTo("ping");
 
 	}
 
