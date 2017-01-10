@@ -11,11 +11,19 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 public class MongoFactory {
 
+    private static MongoOperations testOps;
     private static MongoOperations ops;
-    
+
+    public static MongoOperations testOperations() {
+        if (testOps == null) {
+            testOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "test"));
+        }
+        return testOps;
+    }
+
     public static MongoOperations operations() {
         if (ops == null) {
-            ops = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "test"));
+            ops = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "data"));
         }
         return ops;
     }
