@@ -1,4 +1,4 @@
-package freeride.co.interfaces;
+package freeride.co.interfaces.synchronicity;
 
 /**
  * Created by Greg on 1/15/17.
