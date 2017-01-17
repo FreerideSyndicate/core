@@ -1,4 +1,4 @@
-package freeride.co.interfaces.synchronicity;
+package co.freeride.core.interfaces.synchronicity;
 
 
 import org.springframework.util.concurrent.FailureCallback;

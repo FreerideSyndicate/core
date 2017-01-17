@@ -1,6 +1,7 @@
-package freeride.co;
+package co.freeride.core;
 
 import java.net.UnknownHostException;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;

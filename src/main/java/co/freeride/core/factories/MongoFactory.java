@@ -1,4 +1,4 @@
-package freeride.co.factories;
+package co.freeride.core.factories;
 
 /**
  * Created by Greg on 1/6/17.

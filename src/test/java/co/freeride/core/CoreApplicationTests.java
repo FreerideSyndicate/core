@@ -1,4 +1,4 @@
-package freeride.co;
+package co.freeride.core;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
