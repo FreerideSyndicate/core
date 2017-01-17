@@ -1,8 +1,7 @@
-package freeride.co;
+package co.freeride.core;
 
 import java.net.UnknownHostException;
 
-import com.mongodb.ServerAddress;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
@@ -14,6 +13,7 @@ import org.springframework.dao.annotation.PersistenceExceptionTranslationPostPro
 
 @Configuration
 public class CoreConfiguration {
+
     public @Bean MongoClientFactoryBean mongo() throws UnknownHostException {
         MongoClientFactoryBean mongo = new MongoClientFactoryBean();
         mongo.setHost("localhost");

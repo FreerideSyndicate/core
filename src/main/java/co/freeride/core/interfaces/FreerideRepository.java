@@ -1,4 +1,4 @@
-package freeride.co.interfaces;
+package co.freeride.core.interfaces;
 
 /**
  * Created by Greg on 1/9/17.

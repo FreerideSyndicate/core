@@ -1,4 +1,4 @@
-package freeride.co.controllers;
+package co.freeride.core.controllers;
 
 /**
  * Created by Greg on 12/20/16.
