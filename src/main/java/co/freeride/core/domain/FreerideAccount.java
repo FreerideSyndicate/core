@@ -6,7 +6,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigInteger;
 
 /**
- * Created by Greg on 1/6/17.
+ * @version 1.0.0
+ * @author Greg Price - Created on 1/15/17.
+ * The {@code FreerideAccount} is the base account for all
+ * Freeride users.
  */
 
 @Document

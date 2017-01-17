@@ -7,10 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoClientFactoryBean;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 
-/**
- * Created by Greg on 1/6/17.
- */
-
 @Configuration
 public class CoreConfiguration {
 

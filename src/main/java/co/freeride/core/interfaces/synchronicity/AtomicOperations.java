@@ -1,9 +1,7 @@
 package co.freeride.core.interfaces.synchronicity;
 
-
-import org.springframework.util.concurrent.FailureCallback;
-import org.springframework.util.concurrent.SuccessCallback;
-
+import org.springframework.util.concurrent.ListenableFutureCallback;
+import org.springframework.util.concurrent.ListenableFuture;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -17,9 +15,18 @@ import java.util.stream.Stream;
 
 public interface AtomicOperations<T> {
 
-    default void scheduleTask(SuccessCallback<T> task, FailureCallback completion) {};
+    /**
+     * Default implementation schedules a listenable future with the default settings.
+     * @param task The task to execute.
+     * @param callback The callback interface anonymous class. Override onSuccess, onFailure
+     * To achieve desired results.
+     * @see <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/util/concurrent/ListenableFuture.html">Spring Documentations</a>
+     */
+    default void scheduleTask(ListenableFuture<T> task, ListenableFutureCallback<T> callback) {
+        task.addCallback(callback);
+    };
 
-    default CompletableFuture<T> generateExecutableTask(Function<T, Throwable> executable) {return null;};
+    default CompletableFuture<T> generateCompletableTask(CompletableFuture<T> task, Function<T, Throwable> callback) {return null;};
 
     default void scheduleTasks(Stream<T> tasks) {};
 
