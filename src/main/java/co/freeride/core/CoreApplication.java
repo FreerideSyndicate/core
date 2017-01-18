@@ -13,7 +13,6 @@ import org.springframework.util.SocketUtils;
 @SpringBootApplication
 public class CoreApplication {
 
-
 	@Bean
 	public Integer port() {
 		return SocketUtils.findAvailableTcpPort();

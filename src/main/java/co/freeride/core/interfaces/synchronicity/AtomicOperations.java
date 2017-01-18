@@ -1,9 +1,15 @@
 package co.freeride.core.interfaces.synchronicity;
 
+import akka.parboiled2.RuleTrace;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 import org.springframework.util.concurrent.ListenableFuture;
+
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +19,7 @@ import java.util.stream.Stream;
  * methods as abstractions to atomic operations.
  */
 
-public interface AtomicOperations<T> {
+public interface AtomicOperations<T, R extends Runnable> {
 
     /**
      * Default implementation schedules a listenable future with the default settings.
@@ -22,12 +28,33 @@ public interface AtomicOperations<T> {
      * To achieve desired results.
      * @see <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/util/concurrent/ListenableFuture.html">Spring Documentations</a>
      */
+
     default void scheduleTask(ListenableFuture<T> task, ListenableFutureCallback<T> callback) {
         task.addCallback(callback);
     };
 
-    default CompletableFuture<T> generateCompletableTask(CompletableFuture<T> task, Function<T, Throwable> callback) {return null;};
+    /**
+     * Default implementation returns a generated CompleteableFuture from the ForkJoinPool
+     * @param task The supplier task to execute.
+     * @return CompletableFuture<T>
+     */
 
-    default void scheduleTasks(Stream<T> tasks) {};
+    default CompletableFuture<T> generateCompletableTask(Supplier<T> task) {
+        return CompletableFuture.supplyAsync(task);
+    };
+
+    /**
+     * Default implementation takes a List of tasks and then uses the default thread
+     * pool and supplied Functional Interface to return a stream of mapped objects.
+     * @param tasks A List of type T to which the functional interface will be mapped to.
+     * @param action an implementation of the supplied interfaced to map to each task in the tasks.
+     * @return Stream<Runnable>
+     */
+
+    default Stream<R> generateMappedStream(List<T> tasks, Function<? super T, ? extends R> action) {
+        return tasks.stream().map(action);
+    };
 
 }
+
+

@@ -9,6 +9,6 @@ package co.freeride.core.interfaces.synchronicity;
  * @see AtomicOperations
  */
 
-public interface ParallelOperations<T extends AtomicOperations<? super T>> {
+public interface ParallelOperations<T, R extends AtomicOperations> {
 
 }
